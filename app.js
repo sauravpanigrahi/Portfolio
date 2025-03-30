@@ -58,6 +58,11 @@ app.use(session(sessionOptions)); //session data is stored in the session object
 app.use(flash());//flash message shows the message after the form is submitted 
 
 
+app.use((req,res,next)=>{
+    res.locals.success=req.flash("success");
+    res.locals.error=req.flash("error");
+    next();
+});
 app.use("/",homeRouter);
 
 app.get("/",(req,res)=>{
@@ -69,11 +74,7 @@ app.get("/",(req,res)=>{
  app.all("*", (req, res, next) => {
     next(new expressError(404, "Page not found"));
 });
-app.use((req,res,next)=>{
-    res.locals.success=req.flash("success");
-    res.locals.error=req.flash("error");
-    next();
-});
+
 app.use((err,req,res,next)=>{
     const { status = 500,msg="something went wrong" } = err;
     res.status(status).render('listpages/error', { msg});
