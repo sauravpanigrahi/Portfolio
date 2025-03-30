@@ -1,0 +1,46 @@
+<%- layout('layouts/boilerplate') %>
+
+<body class="body">
+  <div class="container my-5">
+    <div class="formdesign p-4 rounded  col-lg-7 col-md-8 col-sm-10 col-12 mx-auto">
+      <form method="POST" action="/Contact" class="row g-3 needs-validation" novalidate style="color: #fff;">
+        <!-- Name -->
+        <div class="col-md-6">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" name="contact[name]" placeholder="Enter your name" required>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please enter your name.</div>
+        </div>
+
+        <!-- Phone -->
+        <div class="col-md-6">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="tel" class="form-control" id="phone" name="contact[phone]" placeholder="Enter phone number" required>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please enter your phone number.</div>
+        </div>
+
+        <!-- Email -->
+        <div class="col-12">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="contact[email]" placeholder="Enter your email" required>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please enter a valid email.</div>
+        </div>
+
+        <!-- Message -->
+        <div class="col-12">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" id="message" name="contact[message]" rows="4" placeholder="Your message here..." required></textarea>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please enter a message.</div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary w-100">Send Message</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
