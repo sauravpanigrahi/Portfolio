@@ -21,8 +21,10 @@ const cors = require("cors");
 require("dotenv").config(); 
 
 const dbUrl = process.env.ATLASDB_URL || "mongodb://127.0.0.1:27017/portfolio";
+const homeRouter = require("./routes/home.js"); // Home-related routes start with /home
 
-const homeRouter=require("./routes/home.js");
+// Contact-related routes start with /contact
+const contactRouter = require("./routes/contact.js");
 
 
 main()
@@ -71,11 +73,14 @@ app.use((req,res,next)=>{
     res.locals.error=req.flash("error");
     next();
 });
-app.use("/",homeRouter);
-
+app.use("/home", homeRouter);
+app.use("/contact", contactRouter); 
 app.get("/",(req,res)=>{
     res.redirect("/home");
  });
+
+ 
+
 
 
 
