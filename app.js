@@ -72,10 +72,10 @@ app.use((req,res,next)=>{
     res.locals.error=req.flash("error");
     next();
 });
-app.use("/home", homeRouter);
+app.use("/", homeRouter);
 
 app.get("/",(req,res)=>{
-    res.redirect("/home");
+    res.redirect("/");
  });
 
  
@@ -84,12 +84,15 @@ app.get("/",(req,res)=>{
 
 
  app.all("*", (req, res, next) => {
-    next(new expressError(404, "Page not found"));
+    const err = new expressError("Page not found", 404);
+    next(err);
 });
 
 app.use((err, req, res, next) => {
-    const { status = 500, message = "Something went wrong" } = err;
-    res.status(status).render('listpages/error', { msg: message });
+    const { statusCode = 500, message = "Something went wrong" } = err;
+    if (!res.headersSent) {
+        res.status(statusCode).render('listpages/error', { msg: message });
+    }
 });
 
 app.listen(port,()=>{
