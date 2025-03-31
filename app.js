@@ -83,10 +83,12 @@ app.get("/",(req,res)=>{
     next(new expressError(404, "Page not found"));
 });
 
-app.use((err,req,res,next)=>{
-    const { status = 500,msg="something went wrong" } = err;
-    res.status(status).render('listpages/error', { msg});
-})
+app.use((err, req, res, next) => {
+    const status = err.status || 500;  // Ensure status is a valid number
+    const msg = err.message || "Something went wrong"; // Properly handle the error message
+    res.status(status).render('listpages/error', { msg });
+});
+
 app.listen(port,()=>{
     console.log(`Server is running on port ${port}`);
 })
