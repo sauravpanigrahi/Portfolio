@@ -10,11 +10,15 @@ const port=8000;//port is the port number of the server
 const mongoose=require('mongoose');//mongoose is used to connect to the database
 // const{ contactSchema }=require('./Schema.js');//contact schema is used to validate the data in the form
 // const Contact=require('./models/contact.js');
-// const expressError=require('./utils/expressError.js');//express error is used to handle the error in the server
+const expressError=require('./utils/expressError.js');//express error is used to handle the error in the server
 // const wrapasync=require('./utils/wrapasync.js');//wrapasync is used to wrap the async function
 const flash=require('connect-flash'); //flash message shows the message after the form is submitted 
 const session=require('express-session'); //session is used to store the data in the server 
 const MongoStore = require('connect-mongo');
+const nodemailer=require('nodemailer');//nodemailer is used to send the email  
+
+const cors = require("cors");
+require("dotenv").config(); 
 
 const dbUrl = process.env.ATLASDB_URL || "mongodb://127.0.0.1:27017/portfolio";
 
@@ -54,8 +58,12 @@ app.set("views",path.join(__dirname,"views"));
 app.engine("ejs",ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
 app.use(express.urlencoded({ extended: true })); //parse the data from form to json
+app.use(cors());
+
 app.use(session(sessionOptions)); //session data is stored in the session object .
 app.use(flash());//flash message shows the message after the form is submitted 
+
+
 
 
 app.use((req,res,next)=>{
