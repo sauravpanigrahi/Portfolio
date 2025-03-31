@@ -40,7 +40,7 @@ async function main(){
 
 
 const sessionOptions = {
-    secret: process.env.SECRET,
+    secret: process.env.SECRET || "my secretcode",
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
@@ -88,9 +88,8 @@ app.get("/",(req,res)=>{
 });
 
 app.use((err, req, res, next) => {
-    const status = err.status || 500;  // Ensure status is a valid number
-    const msg = err.message || "Something went wrong"; // Properly handle the error message
-    res.status(status).render('listpages/error', { msg });
+    const { status = 500, message = "Something went wrong" } = err;
+    res.status(status).render('listpages/error', { msg: message });
 });
 
 app.listen(port,()=>{
