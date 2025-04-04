@@ -90,10 +90,27 @@ main()
 })
 async function main(){
     try {
+        console.log("Attempting to connect to MongoDB...");
+        console.log("Connection string format (redacted):", 
+            dbUrl.replace(/\/\/[^:]+:[^@]+@/, '//***:***@'));
+        
+        // Check if the connection string contains credentials
+        if (!dbUrl.includes('@') || !dbUrl.includes('://')) {
+            console.error("Invalid connection string format. Missing credentials or protocol.");
+            throw new Error("Invalid MongoDB connection string format");
+        }
+        
+        // Extract username from connection string for logging
+        const usernameMatch = dbUrl.match(/\/\/([^:]+):/);
+        if (usernameMatch) {
+            console.log("Attempting to connect with username:", usernameMatch[1]);
+        }
+        
         await mongoose.connect(dbUrl, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
+        console.log("MongoDB connection successful!");
     } catch (err) {
         console.error("Mongoose connection error:", {
             message: err.message,
@@ -101,7 +118,19 @@ async function main(){
             name: err.name,
             stack: err.stack
         });
-        throw err;
+        
+        // Provide more specific error messages based on error type
+        if (err.name === 'MongoServerError' && err.code === 8000) {
+            console.error("Authentication failed. Please check your username and password.");
+            console.error("Make sure the user has the correct permissions in MongoDB Atlas.");
+        } else if (err.name === 'MongoParseError') {
+            console.error("Connection string parsing error. Please check the format of your connection string.");
+        } else if (err.name === 'MongoNetworkError') {
+            console.error("Network error. Please check your internet connection and MongoDB Atlas network access settings.");
+        }
+        
+        // Don't throw the error, just log it and continue with a fallback
+        console.log("Using fallback connection or continuing without database connection");
     }
 }
 
@@ -120,13 +149,24 @@ let sessionOptions = {
 // Only add MongoDB store if connection string is valid
 if (dbUrl && (dbUrl.startsWith('mongodb://') || dbUrl.startsWith('mongodb+srv://'))) {
     try {
+        console.log("Attempting to create MongoDB session store...");
         sessionOptions.store = MongoStore.create({
             mongoUrl: dbUrl,
             touchAfter: 24 * 3600 // time period in seconds
         });
         console.log("MongoDB session store created successfully");
     } catch (err) {
-        console.error("Error creating MongoDB session store:", err.message);
+        console.error("Error creating MongoDB session store:", {
+            message: err.message,
+            name: err.name,
+            stack: err.stack
+        });
+        
+        // Provide more specific error messages based on error type
+        if (err.name === 'MongoServerError' && err.code === 8000) {
+            console.error("Session store authentication failed. Please check your MongoDB credentials.");
+        }
+        
         console.log("Using memory session store instead");
     }
 } else {

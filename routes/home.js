@@ -50,6 +50,11 @@ router.post("/Form", validateContact, wrapasync(async (req, res) => {
             process.env.ATLASDB_URL.replace(/\/\/[^:]+:[^@]+@/, '//***:***@') : 
             "Using default local connection");
         
+        // Check if MongoDB is connected
+        if (mongoose.connection.readyState !== 1) {
+            console.warn("MongoDB is not connected. Attempting to save contact anyway...");
+        }
+        
         const newcontact = new Contact(req.body.contact);
         try {
             await newcontact.save();
@@ -61,7 +66,15 @@ router.post("/Form", validateContact, wrapasync(async (req, res) => {
                 name: dbError.name,
                 stack: dbError.stack
             });
-            throw dbError; // Re-throw to be caught by outer try-catch
+            
+            // Check for authentication errors
+            if (dbError.name === 'MongoServerError' && dbError.code === 8000) {
+                console.error("Authentication failed when saving contact. Check MongoDB credentials.");
+                req.flash("error", "Message could not be saved due to database authentication issues.");
+                // Continue with email sending even if database save fails
+            } else {
+                throw dbError; // Re-throw other errors to be caught by outer try-catch
+            }
         }
        
         const mailOption={
