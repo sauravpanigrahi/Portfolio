@@ -45,6 +45,30 @@ if (dbUrl && !dbUrl.startsWith('mongodb://') && !dbUrl.startsWith('mongodb+srv:/
     }
 }
 
+// Fix password encoding issues
+if (dbUrl && (dbUrl.startsWith('mongodb://') || dbUrl.startsWith('mongodb+srv://'))) {
+    try {
+        // Extract username and password from the connection string
+        const match = dbUrl.match(/mongodb(\+srv)?:\/\/([^:]+):([^@]+)@/);
+        if (match) {
+            const protocol = match[1] ? 'mongodb+srv' : 'mongodb';
+            const username = match[2];
+            const password = match[3];
+            const restOfUrl = dbUrl.substring(match[0].length);
+            
+            // URL encode the password
+            const encodedPassword = encodeURIComponent(password);
+            
+            // Reconstruct the connection string with encoded password
+            dbUrl = `${protocol}://${username}:${encodedPassword}@${restOfUrl}`;
+            console.log("Connection string with encoded password (redacted):", 
+                dbUrl.replace(/\/\/[^:]+:[^@]+@/, '//***:***@'));
+        }
+    } catch (err) {
+        console.error("Error encoding password:", err.message);
+    }
+}
+
 // Log the final connection string (with credentials redacted)
 console.log("Final MongoDB connection string (redacted):", 
     dbUrl.replace(/\/\/[^:]+:[^@]+@/, '//***:***@'));
