@@ -20,39 +20,94 @@ const nodemailer=require('nodemailer');//nodemailer is used to send the email
 const cors = require("cors");
 require("dotenv").config(); 
 
-const dbUrl = process.env.ATLASDB_URL || "mongodb://127.0.0.1:27017/portfolio";
+// Fix MongoDB connection string
+let dbUrl = process.env.ATLASDB_URL || "mongodb://127.0.0.1:27017/portfolio";
+
+// Log the raw connection string (with credentials redacted)
+console.log("Raw MongoDB connection string (redacted):", 
+    dbUrl ? dbUrl.replace(/\/\/[^:]+:[^@]+@/, '//***:***@') : "No connection string provided");
+
+// Ensure the connection string has the correct format
+if (dbUrl && !dbUrl.startsWith('mongodb://') && !dbUrl.startsWith('mongodb+srv://')) {
+    console.error("Invalid MongoDB connection string format. It should start with 'mongodb://' or 'mongodb+srv://'");
+    console.error("Current connection string (redacted):", dbUrl.replace(/\/\/[^:]+:[^@]+@/, '//***:***@'));
+    
+    // Try to fix the connection string if it's missing the protocol
+    if (dbUrl.includes('@')) {
+        // It looks like a MongoDB Atlas connection string without the protocol
+        dbUrl = "mongodb+srv://" + dbUrl;
+        console.log("Fixed connection string (redacted):", dbUrl.replace(/\/\/[^:]+:[^@]+@/, '//***:***@'));
+    } else {
+        // Use a fallback connection string
+        const fallbackUrl = "mongodb://127.0.0.1:27017/portfolio";
+        console.log("Using fallback connection string:", fallbackUrl);
+        dbUrl = fallbackUrl;
+    }
+}
+
+// Log the final connection string (with credentials redacted)
+console.log("Final MongoDB connection string (redacted):", 
+    dbUrl.replace(/\/\/[^:]+:[^@]+@/, '//***:***@'));
+
 const homeRouter = require("./routes/home.js"); // Home-related routes start with /home
-
-
-
 
 main()
 .then(()=>{
-    console.log("Database connected")
+    console.log("Database connected successfully");
+    console.log("MongoDB connection state:", mongoose.connection.readyState);
 })
 .catch((err)=>{
-    console.log("Database connection error",err)
+    console.error("Database connection error:", {
+        message: err.message,
+        code: err.code,
+        name: err.name,
+        stack: err.stack
+    });
 })
 async function main(){
-    await mongoose.connect(dbUrl);
+    try {
+        await mongoose.connect(dbUrl, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
+    } catch (err) {
+        console.error("Mongoose connection error:", {
+            message: err.message,
+            code: err.code,
+            name: err.name,
+            stack: err.stack
+        });
+        throw err;
+    }
 }
 
-
-
-const sessionOptions = {
+// Create session options with error handling
+let sessionOptions = {
     secret: process.env.SECRET || "my secretcode",
     resave: false,
     saveUninitialized: false,
-    store: MongoStore.create({
-        mongoUrl: dbUrl,
-        touchAfter: 24 * 3600 // time period in seconds
-    }),
     cookie: {
         httpOnly: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
 };
+
+// Only add MongoDB store if connection string is valid
+if (dbUrl && (dbUrl.startsWith('mongodb://') || dbUrl.startsWith('mongodb+srv://'))) {
+    try {
+        sessionOptions.store = MongoStore.create({
+            mongoUrl: dbUrl,
+            touchAfter: 24 * 3600 // time period in seconds
+        });
+        console.log("MongoDB session store created successfully");
+    } catch (err) {
+        console.error("Error creating MongoDB session store:", err.message);
+        console.log("Using memory session store instead");
+    }
+} else {
+    console.log("Invalid MongoDB connection string, using memory session store");
+}
 
 app.set('view engine','ejs');
 app.set("views",path.join(__dirname,"views"));
