@@ -4,7 +4,7 @@ const wrapasync = require('../utils/wrapasync.js');
 const expressError = require("../utils/expressError.js");
 const Contact = require("../models/contact.js");
 const { contactSchema } = require('../Schema.js');
-const nodemailer = require('nodemailer'); // Nodemailer for sending email
+const nodemailer = require('nodemailer');
 const mongoose = require('mongoose');
 require("dotenv").config(); 
 
