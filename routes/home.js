@@ -9,17 +9,15 @@ const mongoose = require('mongoose');
 require("dotenv").config(); 
 
 // Middleware to validate contact data
-const validateContact = (req, res, next) => {
-    if (!req.body.contact) {
-        return next(new expressError("'contact' is required", 400));
-    }
-    const { error } = contactSchema.validate(req.body.contact);
-    if (error) {
-        console.log("Validation error:", error.details);
-        return next(new expressError(error.details.map(e => e.message).join(','), 400));
-    }
-    next();
-};
+
+function validateContact(req, res, next) {
+  const { error } = contactSchema.validate(req.body);
+  if (error) {
+    return res.status(400).send(error.details);
+  }
+  next();
+}
+
 
 // Create a transporter for sending emails
 const transporter = nodemailer.createTransport({
@@ -44,31 +42,22 @@ router.get("/contact", wrapasync(async (req, res) => {
 router.post("/Form", validateContact, wrapasync(async (req, res) => {
     try {
         console.log("Form submitted with data:", req.body.contact);
-        
-        // Log MongoDB connection status
+
+        // Log MongoDB connection state
         console.log("MongoDB connection state:", mongoose.connection.readyState);
-        
-        // Get the connection string from environment variable
-        let dbUrl = process.env.ATLASDB_URL || "";
-        
-        // Check if the connection string is in the format "ATLASDB_URL=mongodb+srv://..."
-        if (dbUrl.startsWith('ATLASDB_URL=')) {
-            dbUrl = dbUrl.substring('ATLASDB_URL='.length);
-        }
-        
-        console.log("MongoDB connection string (redacted):", 
-            dbUrl ? dbUrl.replace(/\/\/[^:]+:[^@]+@/, '//***:***@') : 
-            "Using default local connection");
-        
-        // Check if MongoDB is connected
+
+        // Ensure MongoDB is connected
         if (mongoose.connection.readyState !== 1) {
             console.warn("MongoDB is not connected. Attempting to save contact anyway...");
         }
-        
-        const newcontact = new Contact(req.body.contact);
+
+        // Create a new contact document
+        const newContact = new Contact(req.body.contact);
+
+        // Save contact to the database
         try {
-            await newcontact.save();
-            console.log("Contact saved successfully:", newcontact);
+            await newContact.save();
+            console.log("Contact saved successfully:", newContact);
         } catch (dbError) {
             console.error("Database save error:", {
                 message: dbError.message,
@@ -76,63 +65,41 @@ router.post("/Form", validateContact, wrapasync(async (req, res) => {
                 name: dbError.name,
                 stack: dbError.stack
             });
-            
-            // Check for authentication errors
+
+            // Handle database errors (e.g., authentication)
             if (dbError.name === 'MongoServerError' && dbError.code === 8000) {
                 console.error("Authentication failed when saving contact. Check MongoDB credentials.");
                 req.flash("error", "Message could not be saved due to database authentication issues.");
-                // Continue with email sending even if database save fails
             } else {
-                throw dbError; // Re-throw other errors to be caught by outer try-catch
+                throw dbError; // Re-throw other errors to be caught by the outer try-catch
             }
         }
-       
-        const mailOption={
-            from:process.env.EMAIL,
-            to:process.env.RECEIVER,
-            subject:"Contact Form Submission",
-            text:`Name: ${req.body.contact.name}\nEmail: ${req.body.contact.email}\nPhone: ${req.body.contact.phone}\nMessage: ${req.body.contact.message}`
+
+        // Email options
+        const mailOptions = {
+            from: process.env.EMAIL,
+            to: process.env.RECEIVER,
+            subject: "Contact Form Submission",
+            text: `Name: ${req.body.contact.name}\nEmail: ${req.body.contact.email}\nPhone: ${req.body.contact.phone}\nMessage: ${req.body.contact.message}`
         };
+
+        // Attempt to send the email
         try {
             console.log("Attempting to send email...");
-            console.log("From:", process.env.EMAIL);
-            console.log("To:", process.env.RECEIVER);
-            console.log("Using transporter:", {
-                service: 'gmail',
-                auth: {
-                    user: process.env.EMAIL
-                }
-            });
-            await transporter.sendMail(mailOption); //imp line
+            await transporter.sendMail(mailOptions);
             console.log("Email sent successfully");
             req.flash("success", "Your message has been sent successfully!");
         } catch (emailError) {
-            console.error("Detailed email error:", {
-                message: emailError.message,
-                code: emailError.code,
-                command: emailError.command,
-                response: emailError.response,
-                responseCode: emailError.responseCode,
-                stack: emailError.stack
-            });
+            console.error("Email sending error:", emailError);
             req.flash("error", "Message saved, but email sending failed.");
         }
 
+        // Redirect back to homepage after the form submission
         res.redirect("/");
 
     } catch (err) {
-        console.error("Form submission error:", {
-            message: err.message,
-            stack: err.stack
-        });
-        
-        // Check if it's a validation error
-        if (err.name === 'ValidationError') {
-            req.flash("error", `Validation error: ${err.message}`);
-        } else {
-            req.flash("error", "Failed to send message. Please try again.");
-        }
-        
+        console.error("Form submission error:", err);
+        req.flash("error", "Failed to send message. Please try again.");
         res.redirect("/contact");
     }
 }));
