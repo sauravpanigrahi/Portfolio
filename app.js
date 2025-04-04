@@ -23,18 +23,38 @@ require("dotenv").config();
 const dbUrl = process.env.ATLASDB_URL || "mongodb://127.0.0.1:27017/portfolio";
 const homeRouter = require("./routes/home.js"); // Home-related routes start with /home
 
-
-
+// Log the MongoDB connection string (with credentials redacted)
+console.log("MongoDB connection string (redacted):", 
+    dbUrl.replace(/\/\/[^:]+:[^@]+@/, '//***:***@'));
 
 main()
 .then(()=>{
-    console.log("Database connected")
+    console.log("Database connected successfully");
+    console.log("MongoDB connection state:", mongoose.connection.readyState);
 })
 .catch((err)=>{
-    console.log("Database connection error",err)
+    console.error("Database connection error:", {
+        message: err.message,
+        code: err.code,
+        name: err.name,
+        stack: err.stack
+    });
 })
 async function main(){
-    await mongoose.connect(dbUrl);
+    try {
+        await mongoose.connect(dbUrl, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
+    } catch (err) {
+        console.error("Mongoose connection error:", {
+            message: err.message,
+            code: err.code,
+            name: err.name,
+            stack: err.stack
+        });
+        throw err;
+    }
 }
 
 

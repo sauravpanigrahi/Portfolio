@@ -5,6 +5,7 @@ const expressError = require("../utils/expressError.js");
 const Contact = require("../models/contact.js");
 const { contactSchema } = require('../Schema.js');
 const nodemailer=require('nodemailer');//nodemailer is used to send the email  
+const mongoose = require('mongoose');
 
 require("dotenv").config(); 
 
@@ -41,9 +42,27 @@ router.get("/contact",wrapasync(async(req,res)=>{
 router.post("/Form", validateContact, wrapasync(async (req, res) => {
     try {
         console.log("Form submitted with data:", req.body.contact);
+        
+        // Log MongoDB connection status
+        console.log("MongoDB connection state:", mongoose.connection.readyState);
+        console.log("MongoDB connection string (redacted):", 
+            process.env.ATLASDB_URL ? 
+            process.env.ATLASDB_URL.replace(/\/\/[^:]+:[^@]+@/, '//***:***@') : 
+            "Using default local connection");
+        
         const newcontact = new Contact(req.body.contact);
-        await newcontact.save();
-        console.log("Contact saved:", newcontact);
+        try {
+            await newcontact.save();
+            console.log("Contact saved successfully:", newcontact);
+        } catch (dbError) {
+            console.error("Database save error:", {
+                message: dbError.message,
+                code: dbError.code,
+                name: dbError.name,
+                stack: dbError.stack
+            });
+            throw dbError; // Re-throw to be caught by outer try-catch
+        }
        
         const mailOption={
             from:process.env.EMAIL,
@@ -61,7 +80,7 @@ router.post("/Form", validateContact, wrapasync(async (req, res) => {
                     user: process.env.EMAIL
                 }
             });
-            await transporter.sendMail(mailOption);
+            await transporter.sendMail(mailOption); //imp line
             console.log("Email sent successfully");
             req.flash("success", "Your message has been sent successfully!");
         } catch (emailError) {
