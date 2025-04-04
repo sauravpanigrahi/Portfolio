@@ -11,7 +11,7 @@ require("dotenv").config();
 // Middleware to validate contact data
 
 function validateContact(req, res, next) {
-  const { error } = contactSchema.validate(req.body);
+  const { error } = contactSchema.validate(req.body.Contact);
   if (error) {
     return res.status(400).send(error.details);
   }
@@ -44,7 +44,7 @@ router.post("/Form", validateContact, wrapasync(async (req, res) => {
         console.log("Form submitted with data:", req.body.contact);
 
         // Log MongoDB connection state
-        console.log("MongoDB connection state:", mongoose.connection.readyState);
+        // console.log("MongoDB connection state:", mongoose.connection.readyState);
 
         // Ensure MongoDB is connected
         if (mongoose.connection.readyState !== 1) {
@@ -59,12 +59,8 @@ router.post("/Form", validateContact, wrapasync(async (req, res) => {
             await newContact.save();
             console.log("Contact saved successfully:", newContact);
         } catch (dbError) {
-            console.error("Database save error:", {
-                message: dbError.message,
-                code: dbError.code,
-                name: dbError.name,
-                stack: dbError.stack
-            });
+            console.error("Database save error:", dbError);
+            // Handle specific MongoDB errors (e.g., duplicate key error)
 
             // Handle database errors (e.g., authentication)
             if (dbError.name === 'MongoServerError' && dbError.code === 8000) {
