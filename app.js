@@ -27,6 +27,14 @@ let dbUrl = process.env.ATLASDB_URL || "mongodb://127.0.0.1:27017/portfolio";
 console.log("Raw MongoDB connection string (redacted):", 
     dbUrl ? dbUrl.replace(/\/\/[^:]+:[^@]+@/, '//***:***@') : "No connection string provided");
 
+// Check if the connection string is in the format "ATLASDB_URL=mongodb+srv://..."
+if (dbUrl.startsWith('ATLASDB_URL=')) {
+    console.log("Connection string is in environment variable format, extracting the actual URL");
+    dbUrl = dbUrl.substring('ATLASDB_URL='.length);
+    console.log("Extracted connection string (redacted):", 
+        dbUrl.replace(/\/\/[^:]+:[^@]+@/, '//***:***@'));
+}
+
 // Ensure the connection string has the correct format
 if (dbUrl && !dbUrl.startsWith('mongodb://') && !dbUrl.startsWith('mongodb+srv://')) {
     console.error("Invalid MongoDB connection string format. It should start with 'mongodb://' or 'mongodb+srv://'");
@@ -104,6 +112,8 @@ async function main(){
         const usernameMatch = dbUrl.match(/\/\/([^:]+):/);
         if (usernameMatch) {
             console.log("Attempting to connect with username:", usernameMatch[1]);
+        } else {
+            console.warn("Could not extract username from connection string");
         }
         
         await mongoose.connect(dbUrl, {
@@ -150,6 +160,9 @@ let sessionOptions = {
 if (dbUrl && (dbUrl.startsWith('mongodb://') || dbUrl.startsWith('mongodb+srv://'))) {
     try {
         console.log("Attempting to create MongoDB session store...");
+        console.log("Using connection string (redacted):", 
+            dbUrl.replace(/\/\/[^:]+:[^@]+@/, '//***:***@'));
+        
         sessionOptions.store = MongoStore.create({
             mongoUrl: dbUrl,
             touchAfter: 24 * 3600 // time period in seconds

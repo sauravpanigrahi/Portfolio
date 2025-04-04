@@ -45,9 +45,17 @@ router.post("/Form", validateContact, wrapasync(async (req, res) => {
         
         // Log MongoDB connection status
         console.log("MongoDB connection state:", mongoose.connection.readyState);
+        
+        // Get the connection string from environment variable
+        let dbUrl = process.env.ATLASDB_URL || "";
+        
+        // Check if the connection string is in the format "ATLASDB_URL=mongodb+srv://..."
+        if (dbUrl.startsWith('ATLASDB_URL=')) {
+            dbUrl = dbUrl.substring('ATLASDB_URL='.length);
+        }
+        
         console.log("MongoDB connection string (redacted):", 
-            process.env.ATLASDB_URL ? 
-            process.env.ATLASDB_URL.replace(/\/\/[^:]+:[^@]+@/, '//***:***@') : 
+            dbUrl ? dbUrl.replace(/\/\/[^:]+:[^@]+@/, '//***:***@') : 
             "Using default local connection");
         
         // Check if MongoDB is connected
