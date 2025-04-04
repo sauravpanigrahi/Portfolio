@@ -92,15 +92,24 @@ app.use("/", homeRouter);
 
 // 404 Error handling
 app.all("*", (req, res, next) => {
-    const err = new expressError("Page not found", 404);
-    next(err);
+    next(new expressError("Page not found", 404));
 });
 
 // General error handler
 app.use((err, req, res, next) => {
     const { statusCode = 500, message = "Something went wrong" } = err;
+    
+    // Ensure statusCode is a valid number
+    const validStatusCode = typeof statusCode === 'number' ? statusCode : 500;
+    
+    console.error("Error details:", {
+        message: message,
+        statusCode: validStatusCode,
+        stack: err.stack
+    });
+    
     if (!res.headersSent) {
-        res.status(statusCode).render('listpages/error', { msg: message });
+        res.status(validStatusCode).render('listpages/error', { msg: message });
     }
 });
 
