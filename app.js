@@ -22,11 +22,11 @@ const port = 8000;
 let dbUrl = process.env.ATLASDB_URL || "mongodb://127.0.0.1:27017/portfolio"; // Fallback to local DB
 
 // Log the raw connection string (with credentials redacted)
-console.log("Raw MongoDB connection string (redacted):", dbUrl.replace(/\/\/[^:]+:[^@]+@/, '//***:***@'));
+// console.log("Raw MongoDB connection string (redacted):", dbUrl.replace(/\/\/[^:]+:[^@]+@/, '//***:***@'));
 
 // Ensure MongoDB connection string is valid
 if (dbUrl && !dbUrl.startsWith('mongodb://') && !dbUrl.startsWith('mongodb+srv://')) {
-    console.error("Invalid MongoDB connection string format. It should start with 'mongodb://' or 'mongodb+srv://'");
+    // console.error("Invalid MongoDB connection string format. It should start with 'mongodb://' or 'mongodb+srv://'");
     dbUrl = "mongodb://127.0.0.1:27017/portfolio"; // Fallback
 }
 
