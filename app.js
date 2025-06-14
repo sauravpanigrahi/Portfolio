@@ -22,13 +22,13 @@ const port = 8000;
 let dbUrl = process.env.ATLASDB_URL || "mongodb://127.0.0.1:27017/portfolio"; // Fallback to local DB
 
 // Log the raw connection string (with credentials redacted)
-// console.log("Raw MongoDB connection string (redacted):", dbUrl.replace(/\/\/[^:]+:[^@]+@/, '//***:***@'));
+console.log("Raw MongoDB connection string (redacted):", dbUrl.replace(/\/\/[^:]+:[^@]+@/, '//***:***@'));
 
 // Ensure MongoDB connection string is valid
-// if (dbUrl && !dbUrl.startsWith('mongodb://') && !dbUrl.startsWith('mongodb+srv://')) {
-//     console.error("Invalid MongoDB connection string format. It should start with 'mongodb://' or 'mongodb+srv://'");
-//     dbUrl = "mongodb://127.0.0.1:27017/portfolio"; // Fallback
-// }
+if (dbUrl && !dbUrl.startsWith('mongodb://') && !dbUrl.startsWith('mongodb+srv://')) {
+    console.error("Invalid MongoDB connection string format. It should start with 'mongodb://' or 'mongodb+srv://'");
+    dbUrl = "mongodb://127.0.0.1:27017/portfolio"; // Fallback
+}
 
 main()
     .then(() => console.log("Database connected"))
@@ -39,9 +39,9 @@ main()
 
 async function main() {
     try {
-        // console.log("Attempting to connect to MongoDB...");
+        console.log("Attempting to connect to MongoDB...");
         await mongoose.connect(dbUrl);
-        // console.log("MongoDB connection successful!");
+        console.log("MongoDB connection successful!");
     } catch (err) {
         console.error("Mongoose connection error:", err);
         throw err; // Handle errors at higher level
@@ -61,15 +61,15 @@ let sessionOptions = {
 };
 
 // Add MongoDB session store if the connection is successful
-// if (dbUrl && (dbUrl.startsWith('mongodb://') || dbUrl.startsWith('mongodb+srv://'))) {
-//     try {
-//         sessionOptions.store = MongoStore.create({ mongoUrl: dbUrl });
-//         console.log("MongoDB session store created successfully");
-//     } catch (err) {
-//         console.error("Error creating MongoDB session store:", err);
-//         console.log("Using memory session store instead");
-//     }
-// }
+if (dbUrl && (dbUrl.startsWith('mongodb://') || dbUrl.startsWith('mongodb+srv://'))) {
+    try {
+        sessionOptions.store = MongoStore.create({ mongoUrl: dbUrl });
+        console.log("MongoDB session store created successfully");
+    } catch (err) {
+        console.error("Error creating MongoDB session store:", err);
+        console.log("Using memory session store instead");
+    }
+}
 
 app.set('view engine', 'ejs');
 app.set("views", path.join(__dirname, "views"));

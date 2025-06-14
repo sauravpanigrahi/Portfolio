@@ -1,11 +1,12 @@
 <%- layout('layouts/boilerplate') %>
 
-<body class="body">
-  <div class="container my-5">
-    <div class="formdesign p-4 rounded  col-lg-7 col-md-8 col-sm-10 col-12 mx-auto">
+<body class="body" style="background-color: black;">
+  <div class="container my-4  w-60">
+    <div class="formdesign p-3 p-md-4 rounded col-lg-7 col-md-8 col-sm-10 col-12 mx-auto service-card " >
+      <h2 class="text-center mb-4" style="color: #fff;">Contact Me</h2>
       <form method="POST" action="/Form" class="row g-3 needs-validation" novalidate style="color: #fff;">
         <!-- Name -->
-        <div class="col-md-6">
+        <div class="col-12 col-md-6">
           <label for="name" class="form-label">Name</label>
           <input type="text" class="form-control" id="name" name="contact[name]" placeholder="Enter your name" required>
           <div class="valid-feedback">Looks good!</div>
@@ -13,7 +14,7 @@
         </div>
 
         <!-- Phone -->
-        <div class="col-md-6">
+        <div class="col-12 col-md-6">
           <label for="phone" class="form-label">Phone Number</label>
           <input type="tel" class="form-control" id="phone" name="contact[phone]" placeholder="Enter phone number" required>
           <div class="valid-feedback">Looks good!</div>
@@ -38,7 +39,7 @@
 
         <!-- Submit Button -->
         <div class="col-12">
-          <button type="submit" class="btn btn-primary w-100">Send Message</button>
+          <button type="submit" class="btn btn-primary w-100 py-2">Send Message</button>
         </div>
       </form>
     </div>

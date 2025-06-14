@@ -1,195 +1,473 @@
 <%- layout("/layouts/boilerplate") %>
-<body class="body">
-    <section id="home">
-        <div class="part2 text-center">
-            <img class="pic1" src="/css/img.jpg" alt="">
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="about">
-            <h3>Hello, it's me</h3>
-            <h1 >Saurav Panigrahi</h1>
-            <h3>And I'm  <span class="text"></span></h3>
-            <p style="margin-bottom: 22px;"> I’m an engineering student driven by a deep curiosity for Web Development and Artificial Intelligence.
-                I enjoy creating interactive digital experiences and exploring how intelligent systems can make technology smarter and more impactful.My interests lie in building scalable web applications and applying machine learning to solve real-world challenges.
-                I believe in the power of continuous learning and love turning ideas into purposeful solutions through code and creativity.
-            </p>
-           
-            <a href="#About" class="btn-box" >More About Me</a>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-80 ">
+                <div class="col-lg-6 col-md-12 order-2 order-lg-1">
+                    <div class="hero-content">
+                        <h3 class="greeting">Hello, it's me</h3>
+                        <h1 class="name display-5 fw-bold">Saurav Panigrahi</h1>
+                        <h3 class="role">And I'm <span class="text"></span></h3>
+                        <p class="description">
+                            I'm an engineering student driven by a deep curiosity for Web Development and Artificial Intelligence.
+                            I enjoy creating interactive digital experiences and exploring how intelligent systems can make technology smarter and more impactful.
+                            My interests lie in building scalable web applications and applying machine learning to solve real-world challenges.
+                            I believe in the power of continuous learning and love turning ideas into purposeful solutions through code and creativity.
+                        </p>
+                        <a href="#about" class="btn btn-primary btn-lg mt-3">More About Me</a>
+                        
+                        <!-- Social Links -->
+                        <div class="social-links mt-4">
+                            <!-- <a href="https://www.facebook.com/saurav.panigrahi.731"><i class='bx bxl-facebook'></i></a>
+                            <a href="https://www.instagram.com/__saurav_panigrahi__/"><i class='bx bxl-instagram'></i></a> -->
+                            <a href="#"><i class='bx bxl-twitter'></i></a>
+                            <a href="https://github.com/sauravpanigrahi"><i class='bx bxl-github'></i></a>
+                            <a href="http://www.linkedin.com/in/saurav-panigrahi-21072b296"><i class='bx bxl-linkedin'></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 order-1 order-lg-2 text-center">
+                    <div class="hero-image">
+                        <img src="/css/img.jpg" alt="Saurav Panigrahi" class=" profile-img">
+                    </div>
+                </div>
+            </div>
         </div>
-        
     </section>
 
-    <section class="About" id="About">
-        <div class="part2 text-center">
-            <img class="pic1" src="/css/pic.jpg" alt="">
-          
-        </div>
-        <div class="About-text">
-            <h2>About<span>Me</span></h2>
-            <h4>Full Stack Developer | AI/ML Enthusiast | Electronics Undergraduate</h4>
-            <p>
-                I'm a passionate full-stack developer currently pursuing my undergraduate degree in Electronics and Telecommunication Engineering. I specialize in building modern web applications using technologies like React, Node.js, Express.js, and databases like MongoDB and MySQL. I enjoy turning ideas into functional, user-centric products with scalable and efficient architecture.My academic background fuels my curiosity for communication systems, while my growing passion for Artificial Intelligence and Machine Learning drives me to explore the future of intelligent technologies. I love experimenting with new tools, frameworks, and models to enhance both frontend and backend experiences.Whether it's developing full-stack solutions, integrating AI capabilities, or diving into signal processing concepts, I'm always eager to learn, build, and grow. I believe in writing clean, maintainable code and collaborating with others to bring powerful ideas to life.
-                I’m open to internships, collaborations, and exciting tech discussions—let’s build something impactful together!</p>
-                <div class="home-sci">
-                    <a href="https://www.facebook.com/saurav.panigrahi.731"><i class='bx bxl-facebook-circle'></i></a>
-                    <a href="https://www.instagram.com/__saurav_panigrahi__/"><i class='bx bxl-instagram' ></i></a>
-                    <a href="#"><i class='bx bxl-twitter' ></i></a>
-                    <a href="https://github.com/sauravpanigrahi"><i class='bx bxl-github'></i></a>
-                    <a href="http://www.linkedin.com/in/saurav-panigrahi-21072b296"><i class='bx bxl-linkedin' ></i></a>
+    <!-- About Section -->
+    <section id="about" class="about-section py-5 ">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12 text-center mb-4 mb-lg-0">
+                    <img src="/css/pic.jpg" alt="About Saurav" class="about-img">
                 </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="about-content">
+                        <h2 class="section-title">About <span class="text-primary">Me</span></h2>
+                        <h4 class="subtitle">Full Stack Developer | AI/ML Enthusiast | Electronics Undergraduate</h4>
+                        <p>
+                            I'm a passionate full-stack developer pursuing a degree in Electronics and Telecommunication Engineering. I specialize in building scalable, user-focused web apps using React, Node.js, Express.js, MongoDB, MySQL, and tools like Vite, D3.js, and Cloudinary. I’m also diving into AI/ML, integrating intelligent features into modern applications. My academic grounding in communication systems blends with a growing curiosity for intelligent tech. I enjoy experimenting with new frameworks, crafting clean and efficient solutions, and collaborating on innovative projects. Open to internships, collabs, and bold ideas—let’s create something impactful!
+                            </p>
+                            
+                    </div>
+                </div>
+            </div>
         </div>
-       
     </section>
- 
-<section>
-         <div class="services" id="services">
-             <div class="container">
-                 <h1 class="Sub-title ">My<span> Services</span></h1>
-                 <div class="service-list me-3" >
-                    <div>
-                     <i class='bx bx-code' style='color:#00eeff'></i>
-                     <h2>Front-End Development</h2>
-                     <p>Builds and styles the user interface using HTML, CSS, and JavaScript, and frameworks like React or Angular for a responsive and interactive experience.</p>
-                   <!-- <a href="#" class="read">learn more</a> -->
-                    </div>
-                     <div>
-                         <i class="bx bx-crop"  style='color:#00eeff'></i>
-                     <h2>Back-End Development</h2>
-                     <p>Creates and manages server-side logic and databases, using languages such as Node.js, Python, or Ruby, and handles API integration for communication between the front end and back end.</p>
-                         <!-- <a href="#" class="read">learn more</a> -->
-                     </div>
-                     <div>
-                        <i class='bx bx-cloud-upload' style='color:#00eeff'></i>
-                        <h2>Deployment & DevOps</h2>
-                        <p>Skilled in deploying full-stack applications using platforms like Render, Vercel, and Netlify. Familiar with basic server setup, cloud services, and version control workflows. Learning the fundamentals of CI/CD pipelines, containerization (Docker), and automated deployment to ensure smooth, scalable releases.</p>
-                        <!-- <a href="#" class="read">learn more</a> -->
-                    </div>
-                    
-                         <div>
-                            <i class='bx bx-brain' style='color:#00eeff'></i>
-                            <h2>AI / Machine Learning</h2>
-                            <p>Explores intelligent system design using tools like Python, NumPy, Pandas, and Scikit-learn. Familiar with building models for prediction, classification, and data analysis, while gradually diving into deep learning using TensorFlow and PyTorch.</p>
-                            <!-- <a href="#" class="read">learn more</a> -->
-                        </div>
-                        <div>
-                            <i class='bx bx-data' style='color:#00eeff'></i>
-                            <h2>Database Management</h2>
-                            <p>Experienced in working with both SQL and NoSQL databases such as MySQL and MongoDB. Proficient in designing efficient schemas, writing optimized queries, and integrating databases with backend frameworks using tools like Mongoose and Prisma. Focused on ensuring data integrity, security, and performance in dynamic web applications.</p>
-                            <!-- <a href="#" class="read">learn more</a> -->
-                        </div>
-                 </div>
-             </div>
-         </div>
-     </section>    
 
-     <section id="skill" style="height:8;" class="skill">
-        <div class="skill-cont">
-            <h1 class="Sub-title ">My<span> Skills</span></h1>
-            <div class="skill-list">
-                <div class="list text-center">
-                    <h4 >HTML</h4>
-                    <div class="progress mb-2 h-5">
-                        <div class="progress-bar " style="width: 95%; background: #e44d26">95%</div>
+    <!-- Services Section -->
+    <section id="services" class="services-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">My <span class="text-primary">Services</span></h2>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card h-100">
+                        <i class='bx bx-code service-icon'></i>
+                        <h4>Front-End Development</h4>
+                        <p>Builds and styles the user interface using HTML, CSS, and JavaScript, and frameworks like React or Angular for a responsive and interactive experience.</p>
                     </div>
                 </div>
-                <div class="list text-center">
-                    <h4 >CSS</h4>
-                    <div class="progress mb-2">
-                        <div class="progress-bar" style="width: 80%; background: #2965f1">80%</div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card h-100">
+                        <i class="bx bx-server service-icon"></i>
+                        <h4>Back-End Development</h4>
+                        <p>Creates and manages server-side logic and databases, using languages such as Node.js, Python, or Ruby, and handles API integration for communication between the front end and back end.</p>
                     </div>
                 </div>
-                <div class="list text-center">
-                    <h4 >JavaScript</h4>
-                    <div class="progress mb-2">
-                        <div class="progress-bar" style="width: 70%; background: #f0db4f">70%</div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card h-100">
+                        <i class='bx bx-cloud-upload service-icon'></i>
+                        <h4>Deployment & DevOps</h4>
+                        <p>Skilled in deploying full-stack applications using platforms like Render, Vercel, and Netlify. Familiar with basic server setup, cloud services, and version control workflows.</p>
                     </div>
                 </div>
-                <div class="list text-center">
-                    <h4 >React</h4>
-                    <div class="progress mb-2">
-                        <div class="progress-bar" style="width: 65%; background: #61dafb">65%</div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card h-100">
+                        <i class='bx bx-brain service-icon'></i>
+                        <h4>AI / Machine Learning</h4>
+                        <p>Explores intelligent system design using tools like Python, NumPy, Pandas, and Scikit-learn. Familiar with building models for prediction, classification, and data analysis.</p>
                     </div>
                 </div>
-                <div class="list text-center">
-                    <h4 >Node.js</h4>
-                    <div class="progress mb-2">
-                        <div class="progress-bar" style="width: 80%; background: #43853d">80%</div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card h-100">
+                        <i class='bx bx-data service-icon'></i>
+                        <h4>Database Management</h4>
+                        <p>Experienced in working with both SQL and NoSQL databases such as MySQL and MongoDB. Proficient in designing efficient schemas and writing optimized queries.</p>
                     </div>
                 </div>
-                <div class="list text-center">
-                    <h4 >Python</h4>
-                    <div class="progress mb-2">
-                        <div class="progress-bar" style="width: 85%; background: #3776ab">80%</div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card h-100">
+                        <i class='bx bx-mobile-alt service-icon'></i>
+                        <h4>Responsive Design</h4>
+                        <p>Creating mobile-first, responsive web applications that work seamlessly across all devices and screen sizes using modern CSS frameworks and techniques.</p>
                     </div>
                 </div>
-                <div class="list text-center">
-                    <h4 >Express</h4>
-                    <div class="progress mb-2">
-                        <div class="progress-bar" style="width: 90%; background: #353535">90%</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">My <span class="text-primary">Skills</span></h2>
+            <div class="row g-3">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>HTML</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="95" style="background: #e44d26;">95%</div>
+                        </div>
                     </div>
                 </div>
-                <div class="list text-center">
-                    <h4 >MongoDB</h4>
-                    <div class="progress mb-2">
-                        <div class="progress-bar" style="width: 75%; background: #4db33d">75%</div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>CSS</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="80" style="background: #2965f1;">80%</div>
+                        </div>
                     </div>
                 </div>
-                <div class="list text-center">
-                    <h4 >C</h4>
-                    <div class="progress mb-2">
-                        <div class="progress-bar" style="width: 70%; background: #00599C;">70%</div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>JavaScript</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="70" style="background: #f0db4f;">70%</div>
+                        </div>
                     </div>
                 </div>
-            
-             <div class="list text-center">
-                <h4 >Java</h4>
-                <div class="progress mb-2">
-                    <div class="progress-bar" style="width: 75%; background: #f89820;">75%</div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>React</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="65" style="background: #61dafb;">65%</div>
+                        </div>
+                    </div>
                 </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>Node.js</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="80" style="background: #43853d;">80%</div>
+                        </div>
+                    </div>
                 </div>
-        
-                <div class="list text-center">
-                    <h4 >Postman</h4>
-                <div class="progress mb-2">
-                    <div class="progress-bar" style="width: 90%; background: #ff6c37;">90%</div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>Python</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="85" style="background: #3776ab;">85%</div>
+                        </div>
+                    </div>
                 </div>
-               </div>  
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>Express</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="90" style="background: #353535;">90%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>MongoDB</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="75" style="background: #4db33d;">75%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>C</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="70" style="background: #00599C;">70%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>Java</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="75" style="background: #f89820;">75%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>Git</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="90" style="background: #f1502f;">90%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>MySQL</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="40" style="background: #00618A;">30%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>Flask</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="70" style="background: #000000;">70%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>VS Code</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="95" style="background: #007ACC;">95%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>D3.js</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="60" style="background: #f9a03c;">60%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>Cloudinary</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="75" style="background: #3448c5;">75%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>REST API</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="80" style="background: #6c5ce7;">80%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>Bootstrap</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="90" style="background: #7952b3;">90%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>Material UI</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="70" style="background: #0081CB;">70%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>Tailwind CSS</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="80" style="background: #38bdf8;">80%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>Firebase</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="60" style="background: #FFCA28;">60%</div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section py-4 min-vh-100">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">My <span class="text-primary">Experience</span></h2>
+            <div class="row g-4  ">
+                <div class="col-lg-5 col-md-8">
+                    <div class="project-card service-card">
+                        <div class="card-body pt-3">
+                            <div class="d-flex justify-content-between align-items-start mb-3 row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <h5 class="card-title text-start">Summer Intern</h5>
+                                    <h6 class="text-primary text-start">NIT Rourkela</h6>
+                                </div>
+                                <div class="col-6 ">
+                                <span class="badge bg-primary">May 2025 – Present</span>
+                                <a class="badge bg-primary" href="#">link</a>
+
+                            </div>
+                            </div>
+                            <p class="card-text text-start">
+                                Contributed to feature development and improved the frontend design of a microwave circuit simulation platform. 
+                                Enhanced user interface interactions, optimized performance, and gained hands-on experience in full-stack development. 
+                                Collaborated with team members to integrate new simulation functionalities and troubleshoot issues.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section py-4 min-vh-100" >
+        <div class="container">
+            <h2 class="section-title text-center mb-5">My <span class="text-primary">Projects</span></h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-5 col-md-8">
+                    <div class="project-card service-card">
+                        <img src="css/project1.png" class="card-img-top" alt="Homify Project">
+                        <div class="card-body pt-3">
+                            <h5 class="card-title">Homify - Hotel Listing Platform</h5>
+                            <p class="card-text">
+                                Homify is a hotel and home listing website that allows property owners to list their accommodations for tourists. 
+                                It provides a clean, user-friendly interface for users to explore available stays and helps hosts manage their listings easily.
+                            </p>
+                            <a href="https://project-8um0.onrender.com" class="btn btn-primary" target="_blank">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-8">
+                    <div class="project-card service-card">
+                        <img src="css/project2.png" class="card-img-top" alt="Portfolio Project">
+                        <div class="card-body pt-3">
+                            <h5 class="card-title">Personal Portfolio</h5>
+                            <p class="card-text">
+                                A personal portfolio website built to showcase my web development projects, technical skills, and experience. 
+                                Designed with a clean, responsive layout and features a contact form, project listings, and dynamic content.
+                            </p>
+                            <a href="https://portfolio-tl9z.onrender.com/" class="btn btn-primary" target="_blank">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>&copy; 2024 Saurav Panigrahi. All rights reserved.</p>
+                    <!-- <div class="social-links">
+                        <a href="https://www.facebook.com/saurav.panigrahi.731"><i class='bx bxl-facebook'></i></a>
+                        <a href="https://www.instagram.com/__saurav_panigrahi__/"><i class='bx bxl-instagram'></i></a>
+                        <a href="#"><i class='bx bxl-twitter'></i></a>
+                        <a href="https://github.com/sauravpanigrahi"><i class='bx bxl-github'></i></a>
+                        <a href="http://www.linkedin.com/in/saurav-panigrahi-21072b296"><i class='bx bxl-linkedin'></i></a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     
-                <div class="list text-center">
-                    <h4 >git</h4>
-                    <div class="progress mb-2">
-                        <div class="progress-bar" style="width: 90%; background: #f1502f;">90%</div>
-                    </div>
-                </div>
-                <div class="list text-center">
-                    <h4 >mySql</h4>
-                    <div class="progress mb-2">
-                        <div class="progress-bar" style="width: 40%; background: #00618A;">40%</div>
-                    </div>
-                </div>
-            
-            </div>
-        </div>
-     </section>
-    <section id="project" class="project " style="height: 100vh; width: 100%;padding: 10px;">
-        
-        <div class="project-list  " >
-                <h1 class="Sub-title ">My<span> Projects</span></h1>
-            <div class="p-list" style="display: flex;flex-wrap: wrap; width: 100%;">
-                <a href="https://project-8um0.onrender.com" class="card " style="width: 25rem; margin-left: 50px;text-decoration: none;font-weight: 600;">
-                    <img src="css/project1.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <p class="card-text text-bold ">Homify is a hotel and home listing website that allows property owners to list their accommodations for tourists. It provides a clean, user-friendly interface for users to explore available stays and helps hosts manage their listings easily.</p>
-                    </div>
-                </a>
+    <!-- Custom JS -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-                <a href="https://portfolio-tl9z.onrender.com/" class="card " style="width: 25rem; margin-left: 50px;text-decoration: none;font-weight: 600;">
-                    <img src="css/project2.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <p class="card-text text-bold ">A personal portfolio website built to showcase my web development projects, technical skills, and experience. Designed with a clean, responsive layout and features a contact form, project listings, and dynamic content powered by Node.js, Express, and MongoDB.</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-     </section>
+       
 
+        // Progress bar animation
+        function animateProgressBars() {
+            const progressBars = document.querySelectorAll('.progress-bar');
+            progressBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width + '%';
+            });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.id === 'skills') {
+                        animateProgressBars();
+                    }
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for animations
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
