@@ -40,7 +40,14 @@ main()
 async function main() {
     try {
         console.log("Attempting to connect to MongoDB...");
-        await mongoose.connect(dbUrl);
+        await mongoose.connect(dbUrl, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            ssl: true,
+            retryWrites: true,
+            tls: true,
+            tlsAllowInvalidCertificates: false
+        });
         console.log("MongoDB connection successful!");
     } catch (err) {
         console.error("Mongoose connection error:", err);

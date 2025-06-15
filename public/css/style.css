@@ -723,6 +723,7 @@ section.animate {
       flex-direction: column;
       align-items: center;
   }
+  
 }
 
 @media (max-width: 576px) {
@@ -747,4 +748,5 @@ section.animate {
       max-width: 300px;
       height: 300px;
   }
+ 
 }
