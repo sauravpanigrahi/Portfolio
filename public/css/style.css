@@ -11,7 +11,7 @@
   --card-bg: rgba(255, 255, 255, 0.05);
   --border-radius: 15px;
   --box-shadow: 0 10px 30px rgba(0, 238, 255, 0.2);
-  --transition: all 0.3s ease;
+  --transition: all 1s ease;
 }
 
 /* Global Styles */
@@ -19,23 +19,20 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: #ffffff;
+  color:#ffffff;
 }
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: var(--dark-bg);
-  color: var(--text-light);
+  /* background-color: var(--dark-bg); */
   line-height: 1.6;
   overflow-x: hidden;
 }
 
-html {
-  scroll-behavior: smooth;
-}
 html, body {
-  background-color:black!important;
   background: black!important;
+  
+   scroll-behavior: smooth;
 }
 
 /* Custom Scrollbar */
@@ -58,7 +55,7 @@ html, body {
 
 /* Navigation Styles */
 .navbar {
-  background-color: var(--darker-bg) !important;
+  /* background-color: var(--darker-bg) !important; */
   padding: 1rem 0;
   transition: var(--transition);
   backdrop-filter: blur(10px);
@@ -74,6 +71,19 @@ html, body {
   font-weight: 700 !important;
   color: var(--primary-color) !important;
   text-decoration: none;
+}
+.navbar-collapse.collapse {
+    display: none !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
+.navbar-collapse.collapse.show {
+    display: block !important;
+    height: auto !important;
+}
+.collapse {
+    pointer-events: auto !important;
 }
 
 .navbar-nav .nav-link {
@@ -111,10 +121,16 @@ html, body {
 .navbar-toggler {
   border: 2px solid var(--primary-color);
   padding: 0.25rem 0.5rem;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22' /%3e%3c/svg%3e");
+}
+.navbar-collapse {
+  background: black !important;
+  padding: 1rem;
 }
 
 /* Section Styles */
@@ -488,7 +504,7 @@ section.animate {
   border: 1px solid rgba(0, 238, 255, 0.1);
   transition: var(--transition);
   position: relative;
-  group: hover;
+  /* group: hover; */
 }
 
 .portfolio-item:hover {

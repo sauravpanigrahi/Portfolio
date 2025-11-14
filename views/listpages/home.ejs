@@ -1,37 +1,5 @@
 <%- layout("/layouts/boilerplate") %>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#home">Portfolio</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#services">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
     <!-- Home Section -->
     <section id="home" class="hero-section">
         <div class="container">
@@ -41,17 +9,18 @@
                         <h3 class="greeting">Hello, it's me</h3>
                         <h1 class="name display-5 fw-bold">Saurav Panigrahi</h1>
                         <h3 class="role">And I'm <span class="text"></span></h3>
-                        <p class="description">
-                            I'm an engineering student driven by a deep curiosity for Web Development and Artificial Intelligence.
-                            I enjoy creating interactive digital experiences and exploring how intelligent systems can make technology smarter and more impactful.
-                            My interests lie in building scalable web applications and applying machine learning to solve real-world challenges.
-                            I believe in the power of continuous learning and love turning ideas into purposeful solutions through code and creativity.
-                        </p>
+                        <p class="description text-justify">
+    I'm a passionate engineering student with a strong interest in full-stack web development and modern technologies. 
+    I love building fast, scalable, and visually appealing web applications that offer meaningful user experiences. 
+    Alongside development, I’m continuously exploring AI and automation to understand how intelligent systems can solve real-world problems efficiently.
+    With a mindset of continuous learning, I enjoy experimenting with new tools, frameworks, and ideas to turn concepts into functional, impactful solutions.
+</p>
+
                         <a href="#about" class="btn btn-primary btn-lg mt-3">More About Me</a>
                         
                         <!-- Social Links -->
                         <div class="social-links mt-4">
-                    <a href="#"><i class='bx bxl-twitter'></i></a>
+                    <!-- <a href="#"><i class='bx bxl-twitter'></i></a> -->
                     <a href="https://github.com/sauravpanigrahi"><i class='bx bxl-github'></i></a>
                     <a href="http://www.linkedin.com/in/saurav-panigrahi-21072b296"><i class='bx bxl-linkedin'></i></a>
                     <a href="mailto:sauravpanigrahi2004@gmail.com"><i class='bx bxs-envelope'></i></a>
@@ -116,13 +85,13 @@
                         <p>Skilled in deploying full-stack applications using platforms like Render, Vercel, and Netlify. Familiar with basic server setup, cloud services, and version control workflows.</p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                <!-- <div class="col-lg-4 col-md-6">
                     <div class="service-card h-100">
                         <i class='bx bx-brain service-icon'></i>
                         <h4>AI / Machine Learning</h4>
                         <p>Explores intelligent system design using tools like Python, NumPy, Pandas, and Scikit-learn. Familiar with building models for prediction, classification, and data analysis.</p>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card h-100">
                         <i class='bx bx-data service-icon'></i>
@@ -322,7 +291,76 @@
                         </div>
                     </div>
                 </div>
-                
+
+                <!-- ANSYS HFSS -->
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>ANSYS HFSS</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="70" style="background: #00C8FF;">70%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NEXT.JS -->
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>Next.js</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="65" style="background: #000000;">65%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TYPESCRIPT -->
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>TypeScript</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="75" style="background: #3178C6;">75%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MATLAB -->
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>MATLAB</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="85" style="background: #FF8C00;">85%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- JWT -->
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>JWT</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="80" style="background: #00A884;">80%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FASTAPI -->
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>FastAPI</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="70" style="background: #05998B;">70%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RENDER -->
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="skill-item">
+                        <h5>Render</h5>
+                        <div class="progress">
+                            <div class="progress-bar" data-width="60" style="background: #3B82F6;">60%</div>
+                        </div>
+                    </div>
+                </div>                
             </div>
         </div>
     </section>
