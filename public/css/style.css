@@ -24,7 +24,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  /* background-color: var(--dark-bg); */
+  background-color: var(--dark-bg);
   line-height: 1.6;
   overflow-x: hidden;
 }
@@ -55,14 +55,14 @@ html, body {
 
 /* Navigation Styles */
 .navbar {
-  /* background-color: var(--darker-bg) !important; */
+  background-color: var(--darker-bg) !important;
   padding: 1rem 0;
   transition: var(--transition);
   backdrop-filter: blur(10px);
 }
 
 .navbar.scrolled {
-  background-color: rgba(5, 17, 41, 0.95) !important;
+  /* background-color: rgba(5, 17, 41, 0.95) !important; */
   box-shadow: 0 2px 20px rgba(0, 238, 255, 0.1);
 }
 
