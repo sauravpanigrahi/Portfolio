@@ -18,29 +18,7 @@ const nodemailer = require("nodemailer");
 const app = express();
 const port = 8000;
 
-// ----------------------
-// DATABASE CONNECTION
-// ----------------------
-let dbUrl = process.env.ATLASDB_URL || "mongodb://127.0.0.1:27017/portfolio";
 
-// Validate URL format
-if (dbUrl && !dbUrl.startsWith("mongodb://") && !dbUrl.startsWith("mongodb+srv://")) {
-    console.log("Invalid DB URL, switching to local");
-    dbUrl = "mongodb://127.0.0.1:27017/portfolio";
-}
-
-async function connectDB() {
-    try {
-        console.log("Connecting to MongoDB...");
-        await mongoose.connect(dbUrl);
-        console.log("MongoDB connected successfully!");
-    } catch (err) {
-        console.error("MongoDB connection error:", err.message);
-        console.log("⚠ Using fallback / continuing without DB connection");
-    }
-}
-
-connectDB();
 
 // ----------------------
 // SESSION CONFIGURATION
@@ -55,15 +33,6 @@ let sessionOptions = {
         maxAge: 1000 * 60 * 60 * 24 * 7,
     }
 };
-
-// Use MongoDB session store ONLY if Atlas/local DB URL is valid
-try {
-    sessionOptions.store = MongoStore.create({ mongoUrl: dbUrl });
-    console.log("MongoDB session store created successfully");
-} catch (err) {
-    console.error("Session store error:", err.message);
-    console.log("⚠ Falling back to in-memory session store");
-}
 
 // ----------------------
 // APP SETTINGS & MIDDLEWARE
