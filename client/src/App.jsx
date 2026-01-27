@@ -249,9 +249,9 @@ function App() {
               <a className="nav-link" href="#projects">
                 Projects
               </a>
-              <a className="nav-link" href="#contact">
+              {/* <a className="nav-link" href="#contact">
                 Contact
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
@@ -416,7 +416,7 @@ function App() {
           </div>
         </section>
 
-        <section id="contact" className="contact-section">
+        {/* <section id="contact" className="contact-section">
           <div className="container py-5">
             <h2 className="section-title text-center mb-5">
               Get In <span className="text-primary">Touch</span>
@@ -518,7 +518,7 @@ function App() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
 
       <footer className="footer py-4">
