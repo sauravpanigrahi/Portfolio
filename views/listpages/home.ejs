@@ -1,10 +1,9 @@
 <%- layout("/layouts/boilerplate") %>
-<body>
     <!-- Home Section -->
     <section id="home" class="hero-section">
         <div class="container">
             <div class="row align-items-center min-vh-80 ">
-                <div class="col-lg-6 col-md-12 order-2 order-lg-1">
+                <div class="col-lg-7 col-md-12 order-2 order-lg-1">
                     <div class="hero-content">
                         <h3 class="greeting">Hello, it's me</h3>
                         <h1 class="name display-5 fw-bold">Saurav Panigrahi</h1>
@@ -16,19 +15,18 @@
     With a mindset of continuous learning, I enjoy experimenting with new tools, frameworks, and ideas to turn concepts into functional, impactful solutions.
 </p>
 
-                        <a href="#about" class="btn btn-primary btn-lg mt-3">More About Me</a>
+                        <!-- <a href="#about" class="btn btn-primary btn-lg mt-3">More About Me</a> -->
                         
                         <!-- Social Links -->
                         <div class="social-links mt-4">
-                    <!-- <a href="#"><i class='bx bxl-twitter'></i></a> -->
-                    <a href="https://github.com/sauravpanigrahi"><i class='bx bxl-github'></i></a>
-                    <a href="http://www.linkedin.com/in/saurav-panigrahi-21072b296"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://github.com/sauravpanigrahi" rel="noopener noreferrer" target="_blank"><i class='bx bxl-github'></i></a>
+                    <a href="https://www.linkedin.com/in/saurav-panigrahi-21072b296" rel="noopener noreferrer" target="_blank"><i class='bx bxl-linkedin'></i></a>
                     <a href="mailto:sauravpanigrahi2004@gmail.com"><i class='bx bxs-envelope'></i></a>
                 </div>
 
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12 order-1 order-lg-2 text-center">
+                <div class="col-lg-5 col-md-12 order-1 order-lg-2 text-center">
                     <div class="hero-image">
                         <img src="/css/image.jpg" alt="Saurav Panigrahi" class=" profile-img">
                     </div>
@@ -68,21 +66,21 @@
                     <div class="service-card h-100">
                         <i class='bx bx-code service-icon'></i>
                         <h4>Front-End Development</h4>
-                        <p>Builds and styles the user interface using HTML, CSS, and JavaScript, and frameworks like React or Angular for a responsive and interactive experience.</p>
+                        <p>Builds and styles the user interface using HTML, CSS, and JavaScript, and frameworks like React, Typescript for a responsive and interactive experience.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card h-100">
                         <i class="bx bx-server service-icon"></i>
                         <h4>Back-End Development</h4>
-                        <p>Creates and manages server-side logic and databases, using languages such as Node.js, Python, or Ruby, and handles API integration for communication between the front end and back end.</p>
+                        <p>Creates and manages server-side logic and databases, using languages such as Node.js, Python and handles API integration for communication between the front end and back end.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card h-100">
                         <i class='bx bx-cloud-upload service-icon'></i>
                         <h4>Deployment & DevOps</h4>
-                        <p>Skilled in deploying full-stack applications using platforms like Render, Vercel, and Netlify. Familiar with basic server setup, cloud services, and version control workflows.</p>
+                        <p>Skilled in deploying full-stack applications using platforms like Render, Vercel, and AWS. Familiar with basic server setup, cloud services, and version control workflows.</p>
                     </div>
                 </div>
                 <!-- <div class="col-lg-4 col-md-6">
@@ -207,7 +205,7 @@
                     <div class="skill-item">
                         <h5>MySQL</h5>
                         <div class="progress">
-                            <div class="progress-bar" data-width="40" style="background: #00618A;">30%</div>
+                            <div class="progress-bar" data-width="30" style="background: #00618A;">30%</div>
                         </div>
                     </div>
                 </div>
@@ -369,24 +367,34 @@
         <div class="container">
             <h2 class="section-title text-center mb-5">My <span class="text-primary">Experience</span></h2>
             <div class="row g-4  ">
-                <div class="col-lg-5 col-md-8">
-                    <div class="project-card service-card">
+                <div class="col-lg-6 col-md-8">
+                    <div class="project-card text-justify service-card">
                         <div class="card-body pt-3">
                             <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start mb-3 row duration">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-12" >
                                     <h5 class="card-title text-start">Summer Intern</h5>
                                     <h6 class="text-primary text-start">NIT Rourkela</h6>
                                 </div>
-                                <div class="col-6">
-                                    <span class="badge bg-primary">May 2025 – Present</span>
+                                <div class="col-6 col-md-6 col-sm-6 col-12 text-end">
+                                    <span class="badge bg-primary">May 2025 – July 2025</span>
                                 </div>
                             </div>
                             
-                            <p class="card-text text-start">
-                                Contributed to feature development and improved the frontend design of a microwave circuit simulation platform. 
-                                Enhanced user interface interactions, optimized performance, and gained hands-on experience in full-stack development. 
-                                Collaborated with team members to integrate new simulation functionalities and troubleshoot issues.
-                            </p>
+                               
+                               <ul>
+                                    <li>
+                                        Redesigned the full-stack architecture and built 6+ features, reducing API response time from 2–3 seconds to 588ms — a 75%+ improvement in latency and data transfer efficiency across endpoints.
+                                    </li>
+
+                                    <li>
+                                        Designed high-performance backend algorithms for impedance modeling and frequency analysis spanning 1 MHz to 10 GHz, scaling support to 15+ electronic component types in a production environment.
+                                    </li>
+
+                                    <li>
+                                        Deployed REST APIs on Render (backend) and Firebase Hosting (frontend), connecting a React.js frontend with a Flask Python backend, cutting page reload time from 1 second to 160ms — an 84% reduction while improving data throughput, system accuracy, and reliability across the full request-response cycle.
+                                    </li>
+                                    </ul>
+                            
                               
                             <a href="https://drive.google.com/file/d/17b2Qh3WIrpvdaj757NEnwCjIdK1jVc6p/view?usp=drive_link" target="_blank" class="btn d-inline-flex align-items-center gap-2 text-white px-3 py-2"
                             style="background-color: #6f42c1; border: none; box-shadow: 0 4px 10px rgba(111, 66, 193, 0.3); font-size: 1rem;">
@@ -411,53 +419,71 @@
             <h2 class="section-title text-center mb-5">My <span class="text-primary">Projects</span></h2>
             <div class="row g-4 justify-content-center">
                  <div class="col-lg-5 col-md-8">
-                    <div class="project-card service-card">
-                        <img src="css/circuitsim.png" class="card-img-top" alt="Portfolio Project">
+                    <div class="project-card text-justify service-card">
+                        <img src="/css/circuitsim.png" class="card-img-top" alt="CircuitSim Project">
                         <div class="card-body pt-3">
-                            <h5 class="card-title">CircuitSim</h5>
-                            <p class="card-text text-justify " >
-                               An interactive circuit simulator built with React and D3.js that performs DC, AC, and transient analysis, computing Z,Y, and
-                                    frequency-dependent S-parameters. It accurately determines S parameters at varying frequencies and visualises them using S
-                                    (dB) vs. frequency plots, providing intuitive insight into circuit behaviour and performance.
+                            <h5 class="card-title text-center">CircuitSim</h5>
+                            
+                               <ul>
+                                <li>
+                                    Built a web-based circuit simulation tool that supports DC and AC analysis, allowing users to input circuits
+                                    and view calculated results
+                                </li>
+                                    <li> Implemented logic to compute voltages, currents, and frequency response, and added AI-based support to help
+                                    interpret circuit behavior and results along with secure user access and data handling.
+                                </li>
+                               </ul>
 
 
-                            </p>
+                            
                             <div class="icons d-flex flex align-items-start gap-2 mt-3">
                             <a href="https://circuit-simulator-51410.web.app/" class="btn btn-primary" target="_blank">View Project</a>
-                            <a href="https://github.com/sauravpanigrahi/circuit-simulator.git"><i class='bx bxl-github bx-md'></i></a>
+                            <!-- <a href="https://github.com/sauravpanigrahi/circuit-simulator.git"><i class='bx bxl-github bx-md'></i></a> -->
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-5 col-md-8">
-                    <div class="project-card service-card">
-                        <img src="css/project3.png" class="card-img-top" alt="Moodigo Project">
+                    <div class="project-card text-justify service-card">
+                        <img src="/css/project3.png" class="card-img-top" alt="Moodigo Project">
                         <div class="card-body pt-3">
-                            <h5 class="card-title">Moodigo- Ecommerce Website</h5>
-                             <p class="card-text text-justify ">
-                            Moodigo is an e-commerce website that offers mood-based product browsing and shopping. It provides users with a smooth and secure experience while enabling admins to manage product listings and maintain the site’s content efficiently.</p>
+                            <h5 class="card-title text-center">Moodigo- Ecommerce Website</h5>
+                            
+                           <ul>
+                            <li>
+                                 Moodigo is an e-commerce website that offers mood-based product browsing and shopping. It provides users with a smooth and secure experience while enabling admins to manage product listings and maintain the site’s content efficiently.
+                            </li>
+                           </ul>
                            <div class="icons d-flex flex align-items-start gap-2 mt-3">
                             <a href="https://moodigo-web-app.web.app/" class="btn btn-primary" target="_blank">View Project</a>
-                            <a href="https://github.com/sauravpanigrahi/Moodigo.git"><i class='bx bxl-github bx-md'></i></a>
+                            <!-- <a href="https://github.com/sauravpanigrahi/Moodigo.git"><i class='bx bxl-github bx-md'></i></a> -->
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-8">
-                    <div class="project-card service-card">
-                        <img src="css/project1.png" class="card-img-top" alt="Homify Project">
+                    <div class="project-card text-justify service-card">
+                        <img src="/css/project1.png" class="card-img-top" alt="Homify Project">
                         <div class="card-body pt-3">
                             <h5 class="card-title">Homify - Hotel Listing Platform</h5>
-                             <p class="card-text text-justify ">
-                                Homify is a hotel and home listing website that allows property owners to list their accommodations for tourists. 
+                            
+                                <ul>
+                                    <li>
+ Homify is a hotel and home listing website that allows property owners to list their accommodations for tourists. 
+                                    </li>
+                                    <li>
                                 It provides a clean, user-friendly interface for users to explore available stays and helps hosts manage their listings easily.
-                            </p>
+
+                                    </li>
+                                </ul>
+                               
+                          
                             <div class="icons d-flex flex align-items-start gap-2 mt-3">
                                 <a href="https://project-8um0.onrender.com" class="btn btn-primary" target="_blank">View Project</a>
-                                <a href="https://github.com/your-repo-link" target="_blank" aria-label="View on GitHub">
+                                <!-- <a href="https://github.com/your-repo-link" target="_blank" aria-label="View on GitHub">
                                     <i href="https://github.com/sauravpanigrahi/Homify.git" class='bx bxl-github bx-md'></i>
-                                </a>
+                                </a> -->
                             </div>
 
                             
@@ -468,17 +494,19 @@
                
 
                 <div class="col-lg-5 col-md-8">
-                    <div class="project-card service-card">
-                        <img src="css/project2.png" class="card-img-top" alt="Portfolio Project">
+                    <div class="project-card text-justify service-card">
+                        <img src="/css/project2.png" class="card-img-top" alt="Pathfinder Project">
                         <div class="card-body pt-3">
-                            <h5 class="card-title">Personal Portfolio</h5>
-                            <p class="card-text text-justify ">
-                                A personal portfolio website built to showcase my web development projects, technical skills, and experience. 
-                                Designed with a clean, responsive layout and features a contact form, project listings, and dynamic content.
-                            </p>
-                            <div class="icons d-flex flex align-items-start gap-2 mt-3">
-                            <a href="https://portfolio-tl9z.onrender.com/" class="btn btn-primary" target="_blank">View Project</a>
-                            <a href="https://github.com/sauravpanigrahi/Portfolio.git"><i class='bx bxl-github bx-md'></i></a>
+                            <h5 class="card-title">Pathfinder – AI-Powered Job Matching platform</h5>
+                          
+                                <ul>
+                                    <li>
+                                        A FastAPI backend with AI-powered resume parsing that automatically matches candidates to job
+listings — reducing manual screening by automating relevance scoring across job postings.
+                                    </li>
+                                </ul>
+                            <a href="https://pathfinder-a2a7f.web.app/" class="btn btn-primary mt-4" target="_blank">View Project</a>
+                            <!-- <a href="https://github.com/sauravpanigrahi/Portfolio.git"><i class='bx bxl-github bx-md'></i></a> -->
                             </div>
                         </div>
                     </div>
@@ -506,67 +534,3 @@
             </div>
         </div>
     </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Custom JS -->
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-       
-
-        // Progress bar animation
-        function animateProgressBars() {
-            const progressBars = document.querySelectorAll('.progress-bar');
-            progressBars.forEach(bar => {
-                const width = bar.getAttribute('data-width');
-                bar.style.width = width + '%';
-            });
-        }
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    if (entry.target.id === 'skills') {
-                        animateProgressBars();
-                    }
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, observerOptions);
-
-        // Observe sections for animations
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-    </script>
-</body>
